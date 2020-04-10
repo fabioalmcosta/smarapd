@@ -1,0 +1,14 @@
+﻿@model SmarAPDChallenge.ViewModels.Rooms.RoomCreateViewModel
+
+<div id="errorForm" class="alert alert-danger" role="alert" style="display:none;">
+
+</div>
+<form id="newRoomForm" autocomplete="off">
+    <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 row">
+        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 form-group">
+            @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", required = "required", id = "NameRoom" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+    </div>
+</form>

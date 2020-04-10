@@ -1,0 +1,70 @@
+﻿@model SmarAPDChallenge.ViewModels.Home.HomeListViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Agendamentos de sala.</h1>
+    <p>Sistema simples de demonstração.</p>
+</div>
+
+
+<div class="row">
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { autocomplete = "off" }))
+    {
+        <div class="row">
+            <div class="col form-group">
+                <input type="text" id="start-date" name="inicio" class="form-control datepicker" placeholder="Data e Hora Inicial" value="@ViewContext.HttpContext.Request.Query["inicio"]" oninvalid="this.setCustomValidity('A data inicial é obrigatória!')" required>            </div>
+            <div class="col form-group">
+                <input type="text" class="form-control datepicker" id="end-date" name="fim" placeholder="Data e Hora Final" value="@ViewContext.HttpContext.Request.Query["fim"]" oninvalid="this.setCustomValidity('A data final é obrigatória!')" required>
+            </div>
+            <div>
+                <button type="submit" id="searchButton" class="btn btn-outline-success">Pesquisar</button>
+                <a href="@Url.Action("Index", "Home")" class="btn btn-outline-secondary">Limpar Pesquisa</a>
+                <button type="button" id="newModalBtn" class="btn btn-outline-primary" data-toggle="modal" data-target="#newModal" data-url="@Url.Action("CreateModal", "Home")" data-create="@Url.Action("Create", "Home")" data-label="Novo Agendamento" data-id="schedule">
+                    Novo Agendamento
+                </button>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+<div class="text-center row mt-3">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(m => m.items[0].Id)</th>
+                <th scope="col">@Html.DisplayNameFor(m => m.items[0].Title)</th>
+                <th scope="col">@Html.DisplayNameFor(m => m.items[0].TimeStart)</th>
+                <th scope="col">@Html.DisplayNameFor(m => m.items[0].TimeEnd)</th>
+                <th scope="col">@Html.DisplayNameFor(m => m.items[0].Room)</th>
+                <th scope="col">@Html.DisplayNameFor(m => m.items[0].UserName)</th>
+                <th scope="col">Ação</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            @foreach (var item in Model.items)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Title</td>
+                    <td>@item.TimeStart.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                    <td>@item.TimeEnd.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                    <td>@item.Room.Name</td>
+                    <td>@item.UserName</td>
+                    <td>
+                        <button data-url="@Url.Action("Delete", "Home", new { id = item.Id })" class="btn btn-sm btn-outline-dark deleteButton">Excluir</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@{Html.RenderPartial("Modal/NewModal");}
+
+@{Html.RenderPartial("Modal/DeleteModal");}

@@ -1,0 +1,60 @@
+﻿@model SmarAPDChallenge.ViewModels.Rooms.RoomListViewModel
+
+@{
+    ViewData["Title"] = "Rooms";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Salas cadastradas.</h1>
+    <p>Sistema simples de demonstração.</p>
+</div>
+
+
+<div class="row">
+    @using (Html.BeginForm("Index", "Rooms", FormMethod.Get, new { autocomplete = "off" }))
+    {
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nome" value="@ViewContext.HttpContext.Request.Query["name"]" oninvalid="this.setCustomValidity('O campo nome é obrigatório!')" required>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-outline-success">Pesquisar</button>
+                <a href="@Url.Action("Index", "Rooms")" class="btn btn-outline-secondary">Limpar Pesquisa</a>
+                <button type="button" id="newModalBtn" class="btn btn-outline-primary" data-toggle="modal" data-target="#newModal" data-url="@Url.Action("CreateModal", "Rooms")" data-create="@Url.Action("Create", "Rooms")" data-label="Nova Sala" data-id="room">
+                    Nova Sala
+                </button>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+<div class="text-center row mt-3">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(m => m.items[0].Id)</th>
+                <th scope="col">@Html.DisplayNameFor(m => m.items[0].Name)</th>
+                <th scope="col">Ação</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            @foreach (var item in Model.items)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Name</td>
+                    <td>
+                        <button data-url="@Url.Action("Delete", "Rooms", new { id = item.Id })" class="btn btn-sm btn-outline-dark deleteButton">Excluir</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@{Html.RenderPartial("Modal/NewModal");}
+
+@{Html.RenderPartial("Modal/DeleteModal");}

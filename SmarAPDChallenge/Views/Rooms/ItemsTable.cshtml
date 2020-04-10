@@ -1,0 +1,12 @@
+﻿@model SmarAPDChallenge.ViewModels.Rooms.RoomListViewModel
+
+@foreach (var item in Model.items)
+{
+    <tr>
+        <th scope="row">@item.Id</th>
+        <td>@item.Name</td>
+        <td>
+            <button data-url="@Url.Action("Delete", "Rooms", new { id = item.Id })" class="btn btn-sm btn-outline-dark deleteButton">Excluir</button>
+        </td>
+    </tr>
+}

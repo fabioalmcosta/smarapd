@@ -1,0 +1,16 @@
+﻿@model SmarAPDChallenge.ViewModels.Home.HomeListViewModel
+
+@foreach (var item in Model.items)
+{
+    <tr>
+        <th scope="row">@item.Id</th>
+        <td>@item.Title</td>
+        <td>@item.TimeStart.ToString("dd/MM/yyyy HH:mm:ss")</td>
+        <td>@item.TimeEnd.ToString("dd/MM/yyyy HH:mm:ss")</td>
+        <td>@item.Room.Name</td>
+        <td>@item.UserName</td>
+        <td>
+            <button data-url="@Url.Action("Delete", "Home", new { id = item.Id })" class="btn btn-sm btn-outline-dark deleteButton">Excluir</button>
+        </td>
+    </tr>
+}
