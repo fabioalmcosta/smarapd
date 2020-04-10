@@ -13,10 +13,10 @@ namespace SmarAPDChallenge.ViewModels.Rooms
 
     public class RoomListItemViewModel
     {
-        [Display(Name = "Código")]
+        [Display(Name = "Code")]
         public int Id { get; set; }
 
-        [Display(Name = "Nome")]
+        [Display(Name = "Name")]
         public string Name { get; set; }
     }
 }

@@ -83,9 +83,9 @@ namespace SmarAPDChallenge.Controllers
                 var response = "<br />";
                 foreach (var item in available)
                 {
-                    response = response + "Titulo: " + item.Title + " Início: " + item.TimeStart.ToString("dd/MM/yyyy HH:mm:ss") + " Fim: " + item.TimeEnd.ToString("dd/MM/yyyy HH:mm:ss") + "<br />";
+                    response = response + "Title: " + item.Title + " Start: " + item.TimeStart.ToString("dd/MM/yyyy HH:mm:ss") + " End: " + item.TimeEnd.ToString("dd/MM/yyyy HH:mm:ss") + "<br />";
                 }
-                return BadRequest("Já existem horários conflitantes para o agendamento Solicitado!" + response);
+                return BadRequest("There are already conflicting times for the Requested schedule!" + response);
             }
 
         }

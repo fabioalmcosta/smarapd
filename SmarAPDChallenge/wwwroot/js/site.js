@@ -34,7 +34,7 @@ $("#newModalBtn").on("click", function () {
         },
         error: function (result) {
             $.notify({
-                message: 'Erro ao recuperar dados!'
+                message: 'Error retrieving data!'
             }, {
                 type: 'danger'
             });
@@ -53,7 +53,7 @@ $("#submitNewModal").on("click", function (e) {
         let end = $("#TimeEnd").datetimepicker('getValue');
 
         if (start != "" && end != "" && start >= end) {
-            var message = 'A data inicial não pode ser maior ou a mesma que a data final!';
+            var message = 'The start date cannot be greater than or the same as the end date!';
             $("#errorForm").html(message);
             $("#errorForm").show();
         } else {
@@ -99,14 +99,14 @@ $('#deleteBtn').on('click', function (e) {
             tableBody.empty();
             tableBody.html(data);
             $.notify({
-                message: 'Registro deletado com sucesso!'
+                message: 'Entry deleted successfully!'
             }, {
                 type: 'success'
             });
         },
         error: function (result) {
             $.notify({
-                message: 'Erro ao excluir o registro! ' + result.responseText
+                message: 'Error deleting the record! ' + result.responseText
             }, {
                 type: 'danger'
             });
@@ -146,14 +146,14 @@ function ajaxCreate(btn, data, tableBody)
             tableBody.html(data);
 
             $.notify({
-                message: 'Cadastro realizado com sucesso!'
+                message: 'Registration successful!'
             }, {
                 type: 'success'
             });
         },
         error: function (result) {
             $.notify({
-                message: 'Ocorreu um erro ao realizar o cadastro! ' + result.responseText
+                message: 'An error occurred while registering! ' + result.responseText
             }, {
                 type: 'danger'
             });
@@ -174,7 +174,7 @@ function formValidate(form)
         invalidHandler: function (event, validator) {
             var errors = validator.numberOfInvalids();
             if (errors) {
-                var message = 'Verifique se todos os campos foram preenchidos.';
+                var message = 'Check that all fields have been completed.';
                 $("#errorForm").html(message);
                 $("#errorForm").show();
             } else {

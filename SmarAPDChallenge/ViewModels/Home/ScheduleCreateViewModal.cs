@@ -11,19 +11,19 @@ namespace SmarAPDChallenge.ViewModels.Home
     public class ScheduleCreateViewModal
     {
         [Required]
-        [Display(Name = "Titulo")]
+        [Display(Name = "Title")]
         public string Title { get; set; }
 
         [Required]
-        [Display(Name = "Data e Hora Inicial")]
+        [Display(Name = "Start Date and Time")]
         public DateTime? TimeStart { get; set; }
 
         [Required]
-        [Display(Name = "Data e Hora Final")]
+        [Display(Name = "End Date and Time")]
         public DateTime? TimeEnd { get; set; }
 
         [Required]
-        [Display(Name = "Sala")]
+        [Display(Name = "Room")]
         public int RoomId { get; set; }
 
         public SelectList Rooms { get; set; }

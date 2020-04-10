@@ -5,8 +5,8 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Salas cadastradas.</h1>
-    <p>Sistema simples de demonstração.</p>
+    <h1 class="display-4">Created Rooms.</h1>
+    <p>Simple Demonstration System.</p>
 </div>
 
 
@@ -15,13 +15,13 @@
     {
         <div class="row">
             <div class="col">
-                <input type="text" class="form-control" id="name" name="name" placeholder="Nome" value="@ViewContext.HttpContext.Request.Query["name"]" oninvalid="this.setCustomValidity('O campo nome é obrigatório!')" required>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="@ViewContext.HttpContext.Request.Query["name"]" oninvalid="this.setCustomValidity('The field Name is required!')" required>
             </div>
             <div>
-                <button type="submit" class="btn btn-outline-success">Pesquisar</button>
-                <a href="@Url.Action("Index", "Rooms")" class="btn btn-outline-secondary">Limpar Pesquisa</a>
-                <button type="button" id="newModalBtn" class="btn btn-outline-primary" data-toggle="modal" data-target="#newModal" data-url="@Url.Action("CreateModal", "Rooms")" data-create="@Url.Action("Create", "Rooms")" data-label="Nova Sala" data-id="room">
-                    Nova Sala
+                <button type="submit" class="btn btn-outline-success">Search</button>
+                <a href="@Url.Action("Index", "Rooms")" class="btn btn-outline-secondary">Clean Search</a>
+                <button type="button" id="newModalBtn" class="btn btn-outline-primary" data-toggle="modal" data-target="#newModal" data-url="@Url.Action("CreateModal", "Rooms")" data-create="@Url.Action("Create", "Rooms")" data-label="New Room" data-id="room">
+                    New Room
                 </button>
             </div>
         </div>
@@ -46,7 +46,7 @@
                     <th scope="row">@item.Id</th>
                     <td>@item.Name</td>
                     <td>
-                        <button data-url="@Url.Action("Delete", "Rooms", new { id = item.Id })" class="btn btn-sm btn-outline-dark deleteButton">Excluir</button>
+                        <button data-url="@Url.Action("Delete", "Rooms", new { id = item.Id })" class="btn btn-sm btn-outline-dark deleteButton">Delete</button>
                     </td>
                 </tr>
             }

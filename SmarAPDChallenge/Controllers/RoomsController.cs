@@ -54,7 +54,7 @@ namespace SmarAPDChallenge.Controllers
             }
             else
             {
-                return BadRequest("Existem agendamentos para sala!");
+                return BadRequest("There are room appointments!");
             }
         }
 

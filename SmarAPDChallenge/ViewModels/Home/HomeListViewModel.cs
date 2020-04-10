@@ -14,22 +14,22 @@ namespace SmarAPDChallenge.ViewModels.Home
 
     public class HomeListItemViewModel
     {
-        [Display(Name = "Código")]
+        [Display(Name = "Code")]
         public int Id { get; set; }
 
-        [Display(Name = "Titulo")]
+        [Display(Name = "Title")]
         public string Title { get; set; }
 
-        [Display(Name = "Início Agendamento")]
+        [Display(Name = "Schedule Start")]
         public DateTime TimeStart { get; set; }
 
-        [Display(Name = "Final do Agendamento")]
+        [Display(Name = "Schedule End")]
         public DateTime TimeEnd { get; set; }
 
-        [Display(Name = "Sala")]
+        [Display(Name = "Room")]
         public RoomModel Room { get; set; }
 
-        [Display(Name = "Usuário")]
+        [Display(Name = "User")]
         public string UserName { get; set; }
     }
 }
